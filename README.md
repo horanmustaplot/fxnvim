@@ -87,8 +87,8 @@ git clone --depth 1 https://github.com/horanmustaplot/fxnvim.git ~/.config/nvim
 ##### faq
 
 1. Why did you choose Fennel over Lua? 
-I have fun configuring with fennel more than lua.
+- I have fun configuring with fennel more than lua.
 
 2. Can I customize this configuration?
-I guess :)!
+- I guess :)!
 
