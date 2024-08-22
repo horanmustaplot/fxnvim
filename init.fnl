@@ -238,7 +238,19 @@
 
                  ;; Git
                  :sindrets/diffview.nvim
-                 :lewis6991/gitsigns.nvim
+                 {1 :lewis6991/gitsigns.nvim
+                 :opts {:signs {:add {:text "│"}
+                                :change       {:text "│"}
+                                :changedelete {:text "~"}
+                                :delete       {:text "_"}
+                                :topdelete    {:text "‾"}
+                                :untracked    {:text "┆"}}
+                        :signs_staged {:add          {:text "│"}
+                                       :change       {:text "│"}
+                                       :changedelete {:text "~"}
+                                       :delete       {:text "_"}
+                                       :topdelete    {:text "‾"}
+                                       :untracked    {:text "┆"}}}}
                  ; :SuperBo/fugit2.nvim
 
                  {1 :isakbm/gitgraph.nvim
@@ -266,7 +278,6 @@
                                  :dependencies [:stevearc/dressing.nvim]}]
                  :keys [{1 :<leader>f 2 :<cmd>Fugit2<cr> :mode :n}]
                  :opts {:width 100}}	
-
                  ;; Linting. -----------------------------------------------------------------------------------------------------------------------------
                  ] ;; End of plugins.
 
