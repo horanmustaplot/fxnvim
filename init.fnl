@@ -278,6 +278,8 @@
                                  :dependencies [:stevearc/dressing.nvim]}]
                  :keys [{1 :<leader>f 2 :<cmd>Fugit2<cr> :mode :n}]
                  :opts {:width 100}}	
+
+                 {1 :kevinhwang91/nvim-ufo :dependencies :kevinhwang91/promise-async}
                  ;; Linting. -----------------------------------------------------------------------------------------------------------------------------
                  ] ;; End of plugins.
 

@@ -20,5 +20,8 @@
 ;; Bookmarks
 (vim.api.nvim_set_hl 0 "@comment.note" {:bg :NONE :bold false :fg "#A89984" :italic false})	
 
-;; Change the float background color
+;; Change the float border color
 (vim.api.nvim_set_hl 0 "FloatBorder" {:bg :NONE :bold false :fg "#A89984" :bg "#282828"})	
+
+;; Change the float background color
+(vim.api.nvim_set_hl 0 "NormalFloat" {:bg :NONE :bold false :fg "#A89984" :bg "#282828"})	
