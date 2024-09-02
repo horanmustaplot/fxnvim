@@ -2,6 +2,9 @@
 
 **Description**: A neovim configurations written in fennel aims to be as good as possible.
 
+> Time = Money
+> Neovim with good configurations = Speed = Saving time = ?
+
 ## Table of Contents
 
 - [Requirements](#requirements)

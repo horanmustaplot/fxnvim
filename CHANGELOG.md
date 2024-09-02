@@ -16,9 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 - Enhance spelling
 - Keybinding Improvements
 - Remote Development
-- Better git integration
-- Add some org mode plugins
 - Documentation and Help
+- Extra org mode plugins
 
 ### Changed
 - 
@@ -34,6 +33,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Security
 - 
+
+## [0.0.2] - 27/08/2024
+
+### Added
+- Better git integration
+- Add some org mode plugins
+- Add a better commenting plugin(CommentBox)
+- Add license
+
+### Changed
+- No changes in this release.
+
+### Deprecated
+- No features deprecated in this release.
+
+### Removed
+- No features removed in this release.
+
+### Fixed
+- No bug fixes in this release.
+
+### Security
+- No security improvements in this release.
+
 
 ## [0.0.1] - 21/08/2024 
 

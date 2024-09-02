@@ -12,8 +12,11 @@
                  :desc "Highly opinionated macros to elegantly write your neovim config - https://github.com/udayvir-singh/hibiscus.nvim"
                  :event :VeryLazy}
 
-              ;; UI. ------------------------------------------------------------------------------------------------------------
+              ;                                     ╭────╮
+              ;                                     │ UI │
+              ;                                     ╰────╯
 
+              :horanmustaplot/xcarbon.nvim
               :catppuccin/nvim
               :EdenEast/nightfox.nvim
               :rebelot/kanagawa.nvim
@@ -24,10 +27,11 @@
               :folke/tokyonight.nvim
               :nyoom-engineering/oxocarbon.nvim
               :xero/miasma.nvim
+              :sainnhe/gruvbox-material
               {1 :sainnhe/gruvbox-material
               :lazy      false
               :priority: 1000
-              :config    (fn [] (require :modules.gruvbox-material))}
+              :config    (fn [] (require :modules.theme))}
 
               {1 :nvim-lualine/lualine.nvim
                  :dependencies :nvim-tree/nvim-web-devicons
@@ -61,8 +65,9 @@
                  :opts    {:symbol "│"}
                  :event   :BufReadPost}
 
-              ;; Useful utilities. ----------------------------------------------------------------------------------------------------------------
-
+              ;                              ╭───────────────────╮
+              ;                              │ Useful utilities. │
+              ;                              ╰───────────────────╯
 
               {1 :kylechui/nvim-surround
                  :config (fn []
@@ -130,7 +135,10 @@
                         :mode [:v :n]}]
                  :config true}	
 
-              ;; Telescope. --------------------------------------------------------------------------------------------------------------------
+
+              ;                                 ╭────────────╮
+              ;                                 │ Telescope. │
+              ;                                 ╰────────────╯
 
               {1 :nvim-telescope/telescope.nvim
                  :tag          :0.1.8
@@ -142,7 +150,9 @@
                                     :event :VeryLazy}]
                  :config (fn [] (require :modules.telescope-nvim))}
 
-              ;; Completion. --------------------------------------------------------------------------------------------------------------------------
+              ;                                 ╭─────────────╮
+              ;                                 │ Completion. │
+              ;                                 ╰─────────────╯
 
               {1 :hrsh7th/nvim-cmp
                  :config (fn [] (require :modules.cmp-nvim))
@@ -161,7 +171,9 @@
                  :event  :InsertEnter
                  :config (fn [] (require :modules.cmp-nvim))}
 
-              ;; Org. ---------------------------------------------------------------------------------------------------------------------------
+              ;                                  ╭──────────╮
+              ;                                  │ Org Mode │
+              ;                                  ╰──────────╯
 
               {1 :Zeioth/markmap.nvim
                  :build "yarn global add markmap-cli"
@@ -204,84 +216,114 @@
                  :lazy false
                  :config (fn [] (require :modules.markview-nvim))}	
 
-                 ;; Tree-sitter. ------------------------------------------------------------------------------------------------------------------------
+              ;                                 ╭─────────────╮
+              ;                                 │ Tree-sitter │
+              ;                                 ╰─────────────╯
 
-                 {1 :nvim-treesitter/nvim-treesitter
+              {1 :nvim-treesitter/nvim-treesitter
                  :build  ":TSUpdate"
                  :config (fn [] (require :modules.nvim-treesitter))
                  :event  :BufWinEnter}	
 
-                 ;; Experimental. ------------------------------------------------------------------------------------------------------------------------
+              ;                                ╭──────────────╮
+              ;                                │ Experimental │
+              ;                                ╰──────────────╯
 
-                 {1 :fnune/recall.nvim
+              {1 :fnune/recall.nvim
                  :config true}
 
-                 {1 :b0o/incline.nvim
+              {1 :b0o/incline.nvim
                  :event [:BufReadPost :BufAdd :BufNewFile]
                  :config (fn [] (require :modules.incline-nvim))}
 
-                 ;; Plantuml
-                 :aklt/plantuml-syntax
+              ;; Plantuml
+              :aklt/plantuml-syntax
 
-                 {1 "https://gitlab.com/itaranto/plantuml.nvim"
+              {1 "https://gitlab.com/itaranto/plantuml.nvim"
                  :opts {:render_on_write true
                  :renderer {:options {:dark_mode false :format nil :prog :feh}
                  :type :image}}
                  :version "*"}	
 
-                 {1 :ptdewey/pendulum-nvim
+              {1 :ptdewey/pendulum-nvim
                  :config  (fn [] ((. (require :pendulum) :setup) {:gen_reports true
-                                                                 :log_file    (vim.fn.expand :$HOME/docs/pendulum.csv)
+                                                                 :log_file    (vim.fn.expand :$HOME/.pendulum.csv)
                                                                  :timeout_len 300
                                                                  :timer_len   60
                                                                  :top_n       10}))}
 
                  ;; Git
-                 :sindrets/diffview.nvim
-                 {1 :lewis6991/gitsigns.nvim
-                 :opts {:signs {:add {:text "│"}
-                                :change       {:text "│"}
+              :sindrets/diffview.nvim
+              {1 :lewis6991/gitsigns.nvim
+                 :opts {:signs {:add          {:text "┃"} ; │
+                                :change       {:text "┃"}
                                 :changedelete {:text "~"}
                                 :delete       {:text "_"}
-                                :topdelete    {:text "‾"}
+                                :topdelete    {:text "‾"} ; ‾
                                 :untracked    {:text "┆"}}
-                        :signs_staged {:add          {:text "│"}
-                                       :change       {:text "│"}
+                        :signs_staged {:add          {:text "┃"}
+                                       :change       {:text "┃"}
                                        :changedelete {:text "~"}
                                        :delete       {:text "_"}
                                        :topdelete    {:text "‾"}
                                        :untracked    {:text "┆"}}}}
-                 ; :SuperBo/fugit2.nvim
 
-                 {1 :isakbm/gitgraph.nvim
-                 :keys [{1 :<leader>gl
-                           2 (fn []
-                               ((. (require :gitgraph) :draw) {} {:all true :max_count 5000}))
-                           :desc "GitGraph - Draw"}]
-                 :opts {:format {:fields [:hash :timestamp :author :branch_name :tag]
-                 :timestamp "%H:%M:%S %d-%m-%Y"}
-                 :hooks {:on_select_commit (fn [commit]
-                                             (print "selected commit:" commit.hash))
-                 :on_select_range_commit (fn [from to]
-                                           (print "selected range:" from.hash
-                                                  to.hash))}
-                 :symbols {:commit "*" :merge_commit :M}}}	
+              {1 :isakbm/gitgraph.nvim
+                    :keys [{1 :<leader>gl
+                              2 (fn []
+                                  ((. (require :gitgraph) :draw) {} {:all true :max_count 5000}))
+                              :desc "GitGraph - Draw"}]
+                    :opts {:format {:fields [:hash :timestamp :author :branch_name :tag]
+                    :timestamp "%H:%M:%S %d-%m-%Y"}
+                    :hooks {:on_select_commit (fn [commit]
+                                                (print "selected commit:" commit.hash))
+                    :on_select_range_commit (fn [from to]
+                                              (print "selected range:" from.hash
+                                                     to.hash))}
+                    :symbols {:commit "*" :merge_commit :M}}}	
 
-                 {1 :wakatime/vim-wakatime :lazy false}
+              {1 :wakatime/vim-wakatime :lazy false}
 
-                 {1 :SuperBo/fugit2.nvim
-                 :cmd [:Fugit2 :Fugit2Diff :Fugit2Graph]
-                 :dependencies [:MunifTanjim/nui.nvim
-                                 :nvim-tree/nvim-web-devicons
-                                 :nvim-lua/plenary.nvim
-                                 {1 :chrisgrieser/nvim-tinygit
-                                 :dependencies [:stevearc/dressing.nvim]}]
-                 :keys [{1 :<leader>f 2 :<cmd>Fugit2<cr> :mode :n}]
-                 :opts {:width 100}}	
+              {1 :SuperBo/fugit2.nvim
+                    :cmd [:Fugit2 :Fugit2Diff :Fugit2Graph]
+                    :dependencies [:MunifTanjim/nui.nvim
+                                    :nvim-tree/nvim-web-devicons
+                                    :nvim-lua/plenary.nvim
+                                    {1 :chrisgrieser/nvim-tinygit
+                                    :dependencies [:stevearc/dressing.nvim]}]
+                    :keys [{1 :<leader>f 2 :<cmd>Fugit2<cr> :mode :n :desc "Fugit"}] ;NOTE: add A better dsc
+                    :opts {:width 150
+                           :height 30}}	
 
-                 {1 :kevinhwang91/nvim-ufo :dependencies :kevinhwang91/promise-async}
-                 ;; Linting. -----------------------------------------------------------------------------------------------------------------------------
-                 ] ;; End of plugins.
+              {1 :kevinhwang91/nvim-ufo
+                 :dependencies :kevinhwang91/promise-async
+                 :config (fn [] (require :modules.ufo-nvim))}
+              {1 :LudoPinelli/comment-box.nvim
+                    :Lazy :VeryLazy}
+
+              {1 :nvim-orgmode/orgmode
+              :config (fn []
+                        ((. (require :orgmode) :setup) {:org_agenda_files "~/orgfiles/**/*"
+                                                       :org_default_notes_file "~/orgfiles/refile.org"}))
+              :event :VeryLazy
+              :ft   [:org]}
+
+              {1 :nvim-neorg/neorg
+              :config true
+              :lazy false
+              :version "*"}
+
+              {1 :luukvbaal/statuscol.nvim
+              :Lazy :VeryLazy
+              :config (fn [] (require :modules.statuscol-nvim))}
+
+              ;; Linting. -----------------------------------------------------------------------------------------------------------------------------
+              {1 :rcarriga/nvim-dap-ui
+                 :dependencies [:mfussenegger/nvim-dap :nvim-neotest/nvim-nio]
+                 :Lazy :VeryLazy
+                 :config (fn [] (. (require :dapui) :setup))}
+              ] ;; End of plugins.
+
 
             {:checker {:enabled false}
             :install {:colorscheme [:gruvbox-material]}})
