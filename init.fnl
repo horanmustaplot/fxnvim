@@ -3,7 +3,7 @@
 (local lazy (require :lazy))
 
 (lazy.setup [ ;; Fennel support plugins
-             {1 :udayvir-singh/tangerine.nvim
+              {1 :udayvir-singh/tangerine.nvim
                  :desc "Tangerine provides a painless way to add fennel to your config - https://github.com/udayvir-singh/tangerine.nvim"
                  :lazy false
                  :priority 1000}
@@ -253,7 +253,7 @@
                                                                  :top_n       10}))}
 
                  ;; Git
-              :sindrets/diffview.nvim
+              ; :sindrets/diffview.nvim
               {1 :lewis6991/gitsigns.nvim
                  :opts {:signs {:add          {:text "┃"} ; │
                                 :change       {:text "┃"}
@@ -317,11 +317,16 @@
               :Lazy :VeryLazy
               :config (fn [] (require :modules.statuscol-nvim))}
 
+              {1 :akinsho/flutter-tools.nvim
+                 :config true
+                 :dependencies [:nvim-lua/plenary.nvim :stevearc/dressing.nvim]
+                 :lazy false}	
+
               ;; Linting. -----------------------------------------------------------------------------------------------------------------------------
               {1 :rcarriga/nvim-dap-ui
-                 :dependencies [:mfussenegger/nvim-dap :nvim-neotest/nvim-nio]
-                 :Lazy :VeryLazy
-                 :config (fn [] (. (require :dapui) :setup))}
+              :dependencies [:mfussenegger/nvim-dap :nvim-neotest/nvim-nio]
+              :Lazy :VeryLazy
+              :config (fn [] (. (require :dapui) :setup))}
               ] ;; End of plugins.
 
 

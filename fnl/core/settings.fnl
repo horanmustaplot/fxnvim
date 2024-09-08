@@ -65,6 +65,13 @@
 (set! conceallevel 2)
 (set! concealcursor "")
 
+;; For ufo nvim
+(set! foldcolumn :1)
+(set! foldlevel 99)
+(set! foldlevelstart 99)
+(set! foldenable true)
+(set vim.opt_local.foldlevel 99)
+
 ;; Insert-mode completion
 ;; (set+ :shortmess :c)
 
