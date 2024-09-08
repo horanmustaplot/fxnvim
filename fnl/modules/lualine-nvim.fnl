@@ -52,7 +52,7 @@
           :color {:fg colors.fg2}
           :padding {:left 0 :right 1}})
 
-(ins-left {1 (fn [] "") ;   
+(ins-left {1 (fn [] "") ;   
           :color (fn []
                    (local mode-color
                           {"\019" colors.orange

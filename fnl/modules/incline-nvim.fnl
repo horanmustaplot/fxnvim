@@ -101,5 +101,8 @@
                                                   :gui modified}
                                                   {1 (.. "  " ;; ⧉ 
                                                          (get-window-number win)) ;; split index
-                                                  :group :NormalFloat}])
+                                                  ; :group :NormalFloat
+                                                  :guibg :none
+                                                  :guifg :#C4B08E
+                                                  }])
                                           buffer)})

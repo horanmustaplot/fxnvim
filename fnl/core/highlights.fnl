@@ -1,3 +1,7 @@
+;; NOTE: This highlights has been override for matching gruvbox-material colorsscheme
+;;       So If you use another colorscheme it may be a good idea commenting them or
+;;       overriding them if the colorscheme doesn't match what you want too.
+
 ;; dashboard
 (vim.api.nvim_set_hl 0 :DashboardHeader {:bg "#282828" :fg "#D4BE98"})	
 (vim.api.nvim_set_hl 0 :DashboardFooter {:bg "#282828" :fg "#C99B53"})	
@@ -25,3 +29,7 @@
 
 ;; Change the float background color
 (vim.api.nvim_set_hl 0 "NormalFloat" {:bg :NONE :bold false :fg "#A89984" :bg "#282828"})	
+
+;; For desabling italic comments.
+(vim.api.nvim_set_hl 0 "Comment" {:bg :NONE :bold false :fg "#8B7D6F" :bg :NONE})
+

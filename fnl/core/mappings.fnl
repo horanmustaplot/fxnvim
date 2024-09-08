@@ -46,6 +46,9 @@
 (map! [:n] "<leader>h" ":sp<CR>" "Open new horizontal split")
 (map! [:n] "<leader>v" ":vs<CR>" "Open new vertical split")
 
+; (vim.keymap.set :n :zR (. (require :ufo) :openAllFolds))
+; (vim.keymap.set :n :zM (. (require :ufo) :closeAllFolds))	
+
 ; Some keybindings for normal mode.
 ; (vim.api.nvim_set_keymap :i :<C-l> :<Right> {:noremap true :silent true})
 ; (vim.api.nvim_set_keymap :i :<C-h> :<Left> {:noremap true :silent true})

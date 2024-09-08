@@ -24,10 +24,3 @@
                      (vim.api.nvim_put [line] :l true true)))))	
 
 
-;; Disable cursor line in some file types.
-(vim.api.nvim_create_autocmd :FileType
-                             {:callback (fn [] (set vim.wo.cursorline false))
-                             :pattern ["dashboard" ;; NOTE: List files you wanna disable mini indentscope here.
-                                       "lazy"
-                                       "mason"]})	
-
