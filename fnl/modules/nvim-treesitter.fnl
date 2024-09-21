@@ -4,12 +4,6 @@
 
 (local configs (require :nvim-treesitter.configs))
 
-(tset ((. (require :nvim-treesitter.parsers) :get_parser_configs)) :plantuml
-      {:filetype :plantuml
-       :install_info {:branch :master
-                      :files [:src/parser.c]
-                      :url "/home/x_user/dotfiles/tree_sitter_plantuml"}})
-
 (configs.setup { :ensure_installed [ :query ;; Required by InspectTree.
                                      ;; noice.
                                      :vim 
@@ -31,8 +25,7 @@
                                      :lua
                                      :fennel
                                      :python
-                                     :vimdoc
-                                     :plantuml]
+                                     :vimdoc]
                :highlight {:enable true}
                :indent {:enable true}
                :sync_install false

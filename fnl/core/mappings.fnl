@@ -28,12 +28,6 @@
 (map! [:i] "jj" "<Esc>" "Exit insert mode with jj")
 
 ; Dealing with splits
-; Moving splits
-(map! [:n] "<C-S-H>" "<Cmd>WinShift left<CR>"  "Move current split to the left")
-(map! [:n] "<C-S-J>" "<Cmd>WinShift down<CR>"  "Move current split down")
-(map! [:n] "<C-S-K>" "<Cmd>WinShift up<CR>"    "Move current split up")
-(map! [:n] "<C-S-L>" "<Cmd>WinShift right<CR>" "Move current split to the right")
-
 ; Moving between splits
 (map! [:n] "<C-k>" ":wincmd k<CR>" "Move to the split above")
 (map! [:n] "<C-j>" ":wincmd j<CR>" "Move to the split below")
@@ -41,10 +35,16 @@
 (map! [:n] "<C-l>" ":wincmd l<CR>" "Move to the split on the right")
 
 ; Scaling splits
-(map! [:n] "<A-d>" ":resize +1<CR>" "Increase window height")
-(map! [:n] "<A-f>" ":resize -1<CR>" "Decrease window height")
-(map! [:n] "<A-s>" ":vertical resize +1<CR>" "Increase window width")
-(map! [:n] "<A-g>" ":vertical resize -1<CR>" "Decrease window width")
+(map! [:n] "<C-S-H>" ":resize +1<CR>" "Increase window height")
+(map! [:n] "<C-S-J>" ":resize -1<CR>" "Decrease window height")
+(map! [:n] "<C-S-K>" ":vertical resize +1<CR>" "Increase window width")
+(map! [:n] "<C-S-L>" ":vertical resize -1<CR>" "Decrease window width")
+
+; Moving splits
+(map! [:n] "<A-d>" "<Cmd>WinShift left<CR>"  "Move current split to the left")
+(map! [:n] "<A-f>" "<Cmd>WinShift down<CR>"  "Move current split down")
+(map! [:n] "<A-s>" "<Cmd>WinShift up<CR>"    "Move current split up")
+(map! [:n] "<A-g>" "<Cmd>WinShift right<CR>" "Move current split to the right")
 
 ; Create new splits
 (map! [:n] "<leader>h" ":sp<CR>" "Open new horizontal split")

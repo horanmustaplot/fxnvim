@@ -284,16 +284,16 @@
 
               {1 :wakatime/vim-wakatime :lazy false}
 
-              {1 :SuperBo/fugit2.nvim
-                    :cmd [:Fugit2 :Fugit2Diff :Fugit2Graph]
-                    :dependencies [:MunifTanjim/nui.nvim
-                                    :nvim-tree/nvim-web-devicons
-                                    :nvim-lua/plenary.nvim
-                                    {1 :chrisgrieser/nvim-tinygit
-                                    :dependencies [:stevearc/dressing.nvim]}]
-                    :keys [{1 :<leader>f 2 :<cmd>Fugit2<cr> :mode :n :desc "Fugit"}] ;NOTE: add A better dsc
-                    :opts {:width 150
-                           :height 30}}	
+             ;{1 :SuperBo/fugit2.nvim
+             ;      :cmd [:Fugit2 :Fugit2Diff :Fugit2Graph]
+             ;      :dependencies [:MunifTanjim/nui.nvim
+             ;                      :nvim-tree/nvim-web-devicons
+             ;                      :nvim-lua/plenary.nvim
+             ;                      {1 :chrisgrieser/nvim-tinygit
+             ;                      :dependencies [:stevearc/dressing.nvim]}]
+             ;      :keys [{1 :<leader>f 2 :<cmd>Fugit2<cr> :mode :n :desc "Fugit"}] ;NOTE: add A better dsc
+             ;      :opts {:width 150
+             ;             :height 30}}	
 
               {1 :kevinhwang91/nvim-ufo
                  :dependencies :kevinhwang91/promise-async
