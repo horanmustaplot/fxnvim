@@ -54,6 +54,8 @@
 (map! [:n] "zO" ":lua require('ufo').openAllFolds()<CR>"  "Open all folds")
 (map! [:n] "zC" ":lua require('ufo').closeAllFolds()<CR>" "Close all folds")
 
+(map! [:n] "\\" ":Neotree toggle<CR>" "Open neotree")
+
 ; Some keybindings for normal mode.
 ; (vim.api.nvim_set_keymap :i :<C-l> :<Right> {:noremap true :silent true})
 ; (vim.api.nvim_set_keymap :i :<C-h> :<Left> {:noremap true :silent true})

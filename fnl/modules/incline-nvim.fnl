@@ -103,6 +103,6 @@
                                                          (get-window-number win)) ;; split index
                                                   ; :group :NormalFloat
                                                   :guibg :none
-                                                  :guifg :#C4B08E
+                                                  :guifg :#cccccc
                                                   }])
                                           buffer)})

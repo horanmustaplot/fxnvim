@@ -14,3 +14,10 @@
 ((symbol) @keyword.function @conceal
           (#any-of? @keyword.function "hashfn" "#")
           (#set! conceal "#"))
+
+; [
+;   ")"
+;   "}"
+;   "]"
+; ] @comment
+

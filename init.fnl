@@ -282,7 +282,7 @@
                                                      to.hash))}
                     :symbols {:commit "*" :merge_commit :M}}}	
 
-              {1 :wakatime/vim-wakatime :lazy false}
+             ; {1 :wakatime/vim-wakatime :lazy false}
 
              ;{1 :SuperBo/fugit2.nvim
              ;      :cmd [:Fugit2 :Fugit2Diff :Fugit2Graph]
@@ -322,6 +322,19 @@
                  :dependencies [:nvim-lua/plenary.nvim :stevearc/dressing.nvim]
                  :lazy false}	
 
+              {1 :nvim-neo-tree/neo-tree.nvim 
+              :Lazy :VeryLazy
+              :config (fn [] (require :modules.neo-tree-nvim))}
+
+              :stevearc/aerial.nvim
+              {1 :nvimdev/lspsaga.nvim
+                 :lazy false
+                 :config (fn []
+                           ((. (require :lspsaga) :setup) {}))}
+              
+              :Civitasv/cmake-tools.nvim
+              :Shatur/neovim-cmake
+
               ;; Linting. -----------------------------------------------------------------------------------------------------------------------------
               {1 :rcarriga/nvim-dap-ui
               :dependencies [:mfussenegger/nvim-dap :nvim-neotest/nvim-nio]
@@ -331,10 +344,10 @@
 
 
             {:checker {:enabled false}
-            :install {:colorscheme [:gruvbox-material]}})
+            :install {:colorscheme [:oxocarbon]}})
 
 (require :core.neovide)
 (require :core.mappings)
 (require :core.autocommands)
-(require :core.highlights)
+; (require :core.highlights)
 

@@ -2,7 +2,7 @@
 
 (local lualine (require :lualine))
 
-(local colors {:color2   "#504945"
+(local gruvbox-material {:color2   "#504945"
                :color3   "#32302f"
                :color4   "#a89984"
                :blue   "#7daea3"
@@ -13,6 +13,20 @@
                :red    "#ea6962"
                :bg      "#282828"
                :fg2      "#ddc7a1"})	
+
+(local oxocarbon {:color2   "#161616"
+               :color3   "#262626"
+               :color4   "#393939"
+               :blue   "#78a9ff"
+               :green  "#42be65"
+               :orange "#82cfff"
+               :violet "#ff7eb6"
+               :cyan   "#3ddbd9"
+               :red    "#ee5396"
+               :bg      "#161616"
+               :fg2      "#dde1e6"})	
+
+(local colors oxocarbon)
 
 (local conditions
        {:buffer_not_empty (fn []
@@ -48,43 +62,43 @@
 
 (fn ins-right [component] (table.insert config.sections.lualine_x component))
 
-(ins-left {1 (fn [] "▊")
-          :color {:fg colors.fg2}
-          :padding {:left 0 :right 1}})
+; (ins-left {1 (fn [] "▊")
+;           :color {:fg colors.fg2}
+;           :padding {:left 0 :right 1}})
 
 (ins-left {1 (fn [] "") ;   
           :color (fn []
                    (local mode-color
                           {"\019" colors.orange
-                          "\022" colors.blue
-                          :! colors.fg2
-                          :R colors.violet
-                          :Rv colors.violet
-                          :S colors.orange
-                          :V colors.blue
-                          :c colors.magenta
-                          :ce colors.fg2
-                          :cv colors.fg2
-                          :i colors.green
-                          :ic colors.yellow
-                          :n colors.fg2
-                          :no colors.fg2
-                          :r colors.cyan
-                          :r? colors.cyan
-                          :rm colors.cyan
-                          :s colors.orange
-                          :t colors.fg2
-                          :v colors.blue})
+                          "\022"  colors.blue
+                          :!      colors.fg2
+                          :R      colors.violet
+                          :Rv     colors.violet
+                          :S      colors.orange
+                          :V      colors.blue
+                          :c      colors.magenta
+                          :ce     colors.fg2
+                          :cv     colors.fg2
+                          :i      colors.green
+                          :ic     colors.yellow
+                          :n      colors.fg2
+                          :no     colors.fg2
+                          :r      colors.cyan
+                          :r?     colors.cyan
+                          :rm     colors.cyan
+                          :s      colors.orange
+                          :t      colors.fg2
+                          :v      colors.blue})
                    {:fg (. mode-color (vim.fn.mode))})
           :padding {:right 1}})
 
-(ins-left {1 :filesize :cond conditions.buffer_not_empty})
+; (ins-left {1 :filesize :cond conditions.buffer_not_empty})
 
 (ins-left {1 :filename
           :color {:fg colors.magenta :gui :bold}
           :cond conditions.buffer_not_empty})
 
-(ins-left [:location])
+; (ins-left [:location])
 
 (ins-left {1 :progress :color {:fg colors.fg :gui :bold}})
 
@@ -124,15 +138,15 @@
               :color {:fg colors.blue}
               :cond  conditions.buffer_not_empty})
 
-(ins-right {1 "o:encoding"
-              :color {:fg colors.green :gui :bold}
-              :cond  conditions.hide_in_width
-              :fmt   string.upper})
+; (ins-right {1 "o:encoding"
+;               :color {:fg colors.green :gui :bold}
+;               :cond  conditions.hide_in_width
+;               :fmt   string.upper})
 
-(ins-right {1 :fileformat
-              :color         {:fg colors.green :gui :bold}
-              :fmt           string.upper
-              :icons_enabled false})
+; (ins-right {1 :fileformat
+;               :color         {:fg colors.green :gui :bold}
+;               :fmt           string.upper
+;               :icons_enabled false})
 
 (ins-right {1 :branch :color {:fg colors.violet :gui :bold} :icon ""}) ;     
 
@@ -143,6 +157,6 @@
                            :removed  {:fg colors.red}}
               :symbols {:added " " :modified "󰝤 " :removed " "}})
 
-(ins-right {1 (fn [] "▊") :color {:fg colors.fg2} :padding {:left 1}})
+; (ins-right {1 (fn [] "▊") :color {:fg colors.fg2} :padding {:left 1}})
 
 (lualine.setup config)	

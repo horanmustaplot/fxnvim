@@ -19,12 +19,12 @@
     (set vim.g.neovide_padding_right right)
     (set vim.g.neovide_padding_bottom bottom)))
 
-(local padding-style :mini)
+(local padding-style "nyoom")
 
 (match padding-style
   [:nyoom]     (set-padding 45 40 38 20)
   [:mini]      (set-padding 10 10 10 10)
   [:medium]    (set-padding 20 20 20 20)
   [:none]      (set-padding 0 0 0 0)
-  _            (set-padding 20 20 20 20)))  ; Default case
+  _            (set-padding 40 40 40 40)))  ; Default case
 

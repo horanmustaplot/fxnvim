@@ -23,4 +23,10 @@
                      (local line (.. char " 0x" hex "  \n"))
                      (vim.api.nvim_put [line] :l true true)))))	
 
-
+; Disable folding in some buffers ex: neotree
+(vim.api.nvim_create_autocmd :FileType
+                             {:callback (fn []
+                                          ((. (require :ufo) :detach))
+                                          (set vim.opt_local.foldenable false)
+                                          (set vim.opt_local.foldcolumn :0))
+                              :pattern [:nvcheatsheet :neo-tree :aerial]})

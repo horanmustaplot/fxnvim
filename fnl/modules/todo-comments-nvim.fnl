@@ -2,5 +2,5 @@
 
 (local todo-comments (require :todo-comments))
 
-(todo-comments.setup { :keywords { :LINK {:color :#C4B08E :icon " "}}})
+(todo-comments.setup { :keywords { :LINK {:color :#CCCCCC :icon " "}}})
 
