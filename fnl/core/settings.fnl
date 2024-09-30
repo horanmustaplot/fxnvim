@@ -1,15 +1,17 @@
 (import-macros {: set! : set+} :hibiscus.vim)
 
+(vim.cmd "colorscheme oxocarbon")
+
 ;; Set spelling settings
 (set! spell true)
 (set! spelllang [:en_us])	
 
 ;; Define a list of fonts
-(local fonts ["0xProto Nerd Font:h9.5"        ;; 1
-              "Liga SFMono Nerd Font:h9.5"    ;; 2
-              "Terminess Nerd Font:h9.5"      ;; 3
-              "JetBrainsMono Nerd Font:h9"    ;; 4
-              "FiraCode Nerd Font:h9"])       ;; 5
+(local fonts ["0xProto Nerd Font:h9.5"
+              "Liga SFMono Nerd Font:h9.5"
+              "Terminess Nerd Font:h9.5"
+              "JetBrainsMono Nerd Font:h9"
+              "FiraCode Nerd Font:h9"])
 
 ;; Set the guifont option to the second font in the list
 (set! guifont (. fonts 5))
@@ -36,41 +38,39 @@
 (set! numberwidth 3)
 
 ;; Disable swap file
-;; (set vim.opt.swapfile false)	
 (set! swapfile false)	
 
 ;; List characters
 (set! list)
-(set! listchars { :tab "│ "
-                  :extends "»"
-                  :nbsp "␣"
+(set! listchars { :tab      "│ "
+                  :extends  "»"
+                  :nbsp     "␣"
                   :precedes "«"
-                  :tab "  "
-                  :trail "·"})
+                  :trail    "·"})
 
-(set! fillchars { :diff "╱"
-                  :eob " "
-                  :fold " "
+(set! fillchars { :diff      "╱"
+                  :eob       " "
+                  :fold      " "
                   :foldclose ""
-                  :foldopen ""
-                  :foldsep " "
-                  :horiz "-"
-                  :msgsep "─"
-                  :vert "│"})
+                  :foldopen  ""
+                  :foldsep   " "
+                  :horiz     "-"
+                  :msgsep    "─"
+                  :vert      "│"})
 
 ;; gives a global statusline instead of one for every split, and there is always a separator between splits
 (set! laststatus 3)
 
 ;; Enable concealment
-(set! conceallevel 2)
+(set! conceallevel  2)
 (set! concealcursor "")
 
 ;; For ufo nvim
-(set! foldcolumn :1)
-(set! foldlevel 99)
-(set! foldlevelstart 99)
-(set! foldenable true)
-(set vim.opt_local.foldlevel 99)
+(set! foldcolumn              :1)
+(set! foldlevel               99)
+(set! foldlevelstart          99)
+(set! foldenable              true)
+(set  vim.opt_local.foldlevel 99)
 
 ;; Insert-mode completion
 ;; (set+ :shortmess :c)

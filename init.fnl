@@ -1,5 +1,3 @@
-(require :core.settings)
-
 (local lazy (require :lazy))
 
 (lazy.setup [ ;; Fennel support plugins
@@ -16,30 +14,16 @@
               ;                                     │ UI │
               ;                                     ╰────╯
 
-              :horanmustaplot/xcarbon.nvim
-              :catppuccin/nvim
-              :EdenEast/nightfox.nvim
-              :rebelot/kanagawa.nvim
-              :scottmckendry/cyberdream.nvim
-              :Mofiqul/dracula.nvim
-              :olimorris/onedarkpro.nvim
-              :ellisonleao/gruvbox.nvim
-              :folke/tokyonight.nvim
-              :nyoom-engineering/oxocarbon.nvim
-              :xero/miasma.nvim
-              :sainnhe/gruvbox-material
-              {1 :sainnhe/gruvbox-material
-              :lazy      false
-              :priority: 1000
-              :config    (fn [] (require :modules.theme))}
+              ; Colorscheme
+              :horanmustaplot/oxocarbon.nvim
 
               {1 :nvim-lualine/lualine.nvim
                  :dependencies :nvim-tree/nvim-web-devicons
                  :event        :VeryLazy
                  :init         (fn [] (require :modules.lualine-nvim))}
 
-              {1 :stevearc/dressing.nvim
-                 :event :VeryLazy}
+             ;{1 :stevearc/dressing.nvim
+             ;   :event :VeryLazy}
 
               {1 :folke/noice.nvim
                  :dependencies {1 :MunifTanjim/nui.nvim
@@ -49,9 +33,9 @@
 
               {1 :nvimdev/dashboard-nvim
                  :dependencies  [:nvim-tree/nvim-web-devicons
-                             {1 :folke/persistence.nvim ;; Not a dependency for the plugin itself but used for it.
-                                :event :VeryLazy
-                                :config true}]
+                                 {1 :folke/persistence.nvim ;; Not a dependency for the plugin itself but used for it.
+                                    :event :VeryLazy
+                                    :config true}]
                  :event :VimEnter
                  :config (fn [] (require :modules.dashboard-nvim))}
 
@@ -64,6 +48,10 @@
                  :version "*"
                  :opts    {:symbol "│"}
                  :event   :BufReadPost}
+
+              {1 :luukvbaal/statuscol.nvim
+                 :Lazy :VeryLazy
+                 :config (fn [] (require :modules.statuscol-nvim))}
 
               ;                              ╭───────────────────╮
               ;                              │ Useful utilities. │
@@ -106,8 +94,8 @@
 
               {1 :folke/todo-comments.nvim
                  :event        :BufReadPost
-                 :dependencies :nvim-lua/plenary.nvim
-                 :config       (fn [] (require :modules.todo-comments-nvim))}
+                 :config true
+                 :dependencies :nvim-lua/plenary.nvim}
 
               {1 :echasnovski/mini.align
                  :event :VeryLazy}
@@ -144,8 +132,7 @@
                  :tag          :0.1.8
                  :event        :VeryLazy
                  :dependencies [ :nvim-lua/plenary.nvim
-                                 ;; NOTE: Telescope extensions
-                                 :dhruvmanila/browser-bookmarks.nvim
+                                 ; Telescope extensions
                                  {1 :nvim-telescope/telescope-project.nvim
                                     :event :VeryLazy}]
                  :config (fn [] (require :modules.telescope-nvim))}
@@ -189,14 +176,14 @@
 
               ;; mason-lspconfig. ---------------------------------------------------------------------------------------------------------------
               {1 :williamboman/mason-lspconfig.nvim
-              :dependencies [ {1 :williamboman/mason.nvim
-                                 :event :VeryLazy
-                                 :config true}
-                                 {1 :neovim/nvim-lspconfig
-                                 :event :VeryLazy}]
-              :after [ :williamboman/mason.nvim]
-              :even  :VeryLazy
-              :config (fn [] (require :modules.mason-lspconfig-nvim))}
+                 :dependencies [ {1 :williamboman/mason.nvim
+                                    :event :VeryLazy
+                                    :config true}
+                                    {1 :neovim/nvim-lspconfig
+                                    :event :VeryLazy}]
+                 :after [ :williamboman/mason.nvim]
+                 :even  :VeryLazy
+                 :config (fn [] (require :modules.mason-lspconfig-nvim))}
 
               ;; Language servers. ----------------------------------------------------------------------------------------------------------------------------
 
@@ -237,13 +224,13 @@
                  :config (fn [] (require :modules.incline-nvim))}
 
               ;; Plantuml
-              :aklt/plantuml-syntax
+              ; :aklt/plantuml-syntax
 
-              {1 "https://gitlab.com/itaranto/plantuml.nvim"
-                 :opts {:render_on_write true
-                 :renderer {:options {:dark_mode false :format nil :prog :feh}
-                 :type :image}}
-                 :version "*"}	
+             ;{1 "https://gitlab.com/itaranto/plantuml.nvim"
+             ;   :opts {:render_on_write true
+             ;   :renderer {:options {:dark_mode false :format nil :prog :feh}
+             ;   :type :image}}
+             ;   :version "*"}	
 
               {1 :ptdewey/pendulum-nvim
                  :config  (fn [] ((. (require :pendulum) :setup) {:gen_reports true
@@ -282,8 +269,6 @@
                                                      to.hash))}
                     :symbols {:commit "*" :merge_commit :M}}}	
 
-             ; {1 :wakatime/vim-wakatime :lazy false}
-
              ;{1 :SuperBo/fugit2.nvim
              ;      :cmd [:Fugit2 :Fugit2Diff :Fugit2Graph]
              ;      :dependencies [:MunifTanjim/nui.nvim
@@ -302,20 +287,16 @@
                     :Lazy :VeryLazy}
 
               {1 :nvim-orgmode/orgmode
-              :config (fn []
-                        ((. (require :orgmode) :setup) {:org_agenda_files "~/orgfiles/**/*"
-                                                       :org_default_notes_file "~/orgfiles/refile.org"}))
-              :event :VeryLazy
-              :ft   [:org]}
+                 :config (fn []
+                            ((. (require :orgmode) :setup) {:org_agenda_files "~/orgfiles/**/*"
+                                                           :org_default_notes_file "~/orgfiles/refile.org"}))
+                 :event :VeryLazy
+                 :ft   [:org]}
 
               {1 :nvim-neorg/neorg
-              :config true
-              :lazy false
-              :version "*"}
-
-              {1 :luukvbaal/statuscol.nvim
-              :Lazy :VeryLazy
-              :config (fn [] (require :modules.statuscol-nvim))}
+                 :config true
+                 :lazy false
+                 :version "*"}
 
               {1 :akinsho/flutter-tools.nvim
                  :config true
@@ -326,28 +307,52 @@
               :Lazy :VeryLazy
               :config (fn [] (require :modules.neo-tree-nvim))}
 
-              :stevearc/aerial.nvim
-              {1 :nvimdev/lspsaga.nvim
-                 :lazy false
-                 :config (fn []
-                           ((. (require :lspsaga) :setup) {}))}
-              
-              :Civitasv/cmake-tools.nvim
-              :Shatur/neovim-cmake
+             {1 :nvimdev/lspsaga.nvim
+                :lazy false
+                :config true
+                :dependencies [:nvim-treesitter/nvim-treesitter
+                               :nvim-tree/nvim-web-devicons]}
+
+             {1 :asiryk/auto-hlsearch.nvim
+                :lazy false}
+
+             :Civitasv/cmake-tools.nvim
+             :Shatur/neovim-cmake
+             ; :karb94/neoscroll.nvim
+             ; {1 :declancm/cinnamon.nvim
+             ;    :config true}
+             :wakatime/vim-wakatime
+             :ray-x/web-tools.nvim
+             {1 :windwp/nvim-ts-autotag
+                :config true
+                :lazy :VeryLazy}
+
+             {1 :folke/zen-mode.nvim
+                :dependencies [:folke/twilight.nvim]}
+
+             {1 :ziontee113/color-picker.nvim
+                :config true}
+             {1 :neph-iap/easycolor.nvim
+                :dependencies [:stevearc/dressing.nvim]
+                :lazy :VeryLazy
+                :config true}
+
+             {1 :CRAG666/code_runner.nvim
+                :config true}
 
               ;; Linting. -----------------------------------------------------------------------------------------------------------------------------
               {1 :rcarriga/nvim-dap-ui
-              :dependencies [:mfussenegger/nvim-dap :nvim-neotest/nvim-nio]
-              :Lazy :VeryLazy
-              :config (fn [] (. (require :dapui) :setup))}
+                 :dependencies [:mfussenegger/nvim-dap :nvim-neotest/nvim-nio]
+                 :Lazy :VeryLazy
+                 :config (fn [] (. (require :dapui) :setup))}
               ] ;; End of plugins.
 
 
             {:checker {:enabled false}
             :install {:colorscheme [:oxocarbon]}})
 
+(require :core.settings)
 (require :core.neovide)
 (require :core.mappings)
 (require :core.autocommands)
-; (require :core.highlights)
 

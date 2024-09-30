@@ -4,31 +4,19 @@
 (local mason-lspconfig (require :mason-lspconfig))
 (local lspconfig (require :lspconfig))
 
-;; mason.nvim
-; ((. mason :setup))
-
-;; mason-lspconfig.nvim 
-; ((. mason-lspconfig :setup))
-
-;; Setup servers via lspconfig
-; ((. (. lspconfig :lua_ls) :setup) {})
-; ((. (. lspconfig :rust_analyzer) :setup) {})	
 
 (. mason :setup)
 ((. mason-lspconfig :setup) {:ensure_installed [ :lua_ls
-                                                 :rust_analyzer
+                                                 :html
+                                                 :cssls
                                                  :fennel_language_server
+                                                 :clangd
+                                                 :gopls
                                                  :pyright
+                                                 :rust_analyzer
                                                  :bashls
                                                  :cmake
                                                  :vale_ls]})	
-
-;; ((. (. (require :lspconfig) :clangd) :setup) {})	
-
-;;((. (require :mason-lspconfig) :setup_handlers) (fn [server-name]
-;;                                                  ((. (. (require :lspconfig)
-;;                                                         server-name)
-;;                                                      :setup) {})))
 
 (local handlers
        {1 (fn [server-name]
@@ -38,3 +26,7 @@
                   (lspconfig.lua_ls.setup {:settings {:Lua {:diagnostics {:globals [:vim]}}}}))})	
 
 ((. (require :mason-lspconfig) :setup_handlers) handlers)
+
+; Removing seeing the vim error
+((. (require :lspconfig) :fennel_language_server :setup) {:settings {:fennel {:diagnostics {:globals [:vim]}}}})	
+

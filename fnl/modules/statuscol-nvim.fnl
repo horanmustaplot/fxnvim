@@ -1,7 +1,7 @@
 (local builtin (require :statuscol.builtin))	
 
 ((. (require :statuscol) :setup) {:relculright true
-                                  :ft-ignore [:neo-tree]
+                                  :ft-ignore [:neo-tree :oil]
                                   :segments [{:click "v:lua.ScFa"
                                                :text [(fn []
                                                        (let [foldlevel (vim.fn.foldlevel vim.v.lnum)
@@ -29,9 +29,7 @@
                                                 :namespace [:diagnostic/signs]}}
 
                                               {:click "v:lua.ScLa"
-                                                :text [builtin.lnumfunc]
-                                                :colwidth 2
-                                                :maxwidth 1}
+                                                :text [builtin.lnumfunc]}
 
                                               {:click "v:lua.ScSa"
                                                 :sign {:auto true

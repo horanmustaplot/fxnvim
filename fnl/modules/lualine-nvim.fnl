@@ -38,9 +38,8 @@
                               (and (and gitdir (> (length gitdir) 0))
                                    (< (length gitdir) (length filepath))))
        :hide_in_width (fn [] (> (vim.fn.winwidth 0) 80))})
-
 (local config { 
-      :options {:disabled-filetypes {:statusline [:markdown]}}
+      :options {:disabled_filetypes {:statusline [:dashboard :neo-tree]}}
       :inactive_sections {:lualine_a {}
                           :lualine_b {}
                           :lualine_c {}
@@ -66,7 +65,7 @@
 ;           :color {:fg colors.fg2}
 ;           :padding {:left 0 :right 1}})
 
-(ins-left {1 (fn [] "") ;   
+(ins-left {1 (fn [] "")
           :color (fn []
                    (local mode-color
                           {"\019" colors.orange
