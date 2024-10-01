@@ -99,7 +99,7 @@
                                                   {1 (.. filename
                                                          " ")
                                                   :gui modified}
-                                                  {1 (.. "  " ;; ⧉ 
+                                                  {1 (.. "  " ;;  ⧉  
                                                          (get-window-number win)) ;; split index
                                                   ; :group :NormalFloat
                                                   :guibg :none

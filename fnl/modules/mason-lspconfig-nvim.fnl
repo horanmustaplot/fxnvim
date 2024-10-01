@@ -10,6 +10,7 @@
                                                  :html
                                                  :cssls
                                                  :fennel_language_server
+                                                 ; :fennel_ls
                                                  :clangd
                                                  :gopls
                                                  :pyright

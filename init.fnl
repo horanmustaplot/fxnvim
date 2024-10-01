@@ -44,6 +44,11 @@
                  :config       (fn [] (require :modules.oil-nvim))
                  :cmd          :Oil}
 
+              ; {1 :refractalize/oil-git-status.nvim
+              ;    :config true
+              ;    :dependencies [:stevearc/oil.nvim]}
+
+
               {1 :echasnovski/mini.indentscope
                  :version "*"
                  :opts    {:symbol "│"}
@@ -308,7 +313,7 @@
               :config (fn [] (require :modules.neo-tree-nvim))}
 
              {1 :nvimdev/lspsaga.nvim
-                :lazy false
+                :Event :LspAttach
                 :config true
                 :dependencies [:nvim-treesitter/nvim-treesitter
                                :nvim-tree/nvim-web-devicons]}
@@ -322,13 +327,28 @@
              ; {1 :declancm/cinnamon.nvim
              ;    :config true}
              :wakatime/vim-wakatime
-             :ray-x/web-tools.nvim
+             {1 :ray-x/web-tools.nvim
+                :Lazy :VeryLazy
+                :config true}
              {1 :windwp/nvim-ts-autotag
                 :config true
                 :lazy :VeryLazy}
 
              {1 :folke/zen-mode.nvim
-                :dependencies [:folke/twilight.nvim]}
+                :dependencies [:folke/twilight.nvim]
+                :Lazy :VeryLazy
+                :opts {
+                  :on_close (fn [] ((. (require :lualine) :hide) {:unhide true})
+                                   (set vim.wo.number true)
+                                   (set vim.wo.relativenumber true)
+                                   (set vim.wo.foldenable true)
+                                   (vim.cmd "Lspsaga winbar_toggle"))
+                  :on_open  (fn [] ((. (require :lualine) :hide) {:unhide false})
+                                   (set vim.wo.number false)
+                                   (set vim.wo.relativenumber false)
+                                   (set vim.wo.foldenable false)
+                                   (vim.cmd "Lspsaga winbar_toggle")
+                                   (vim.cmd "colorscheme oxocarbon"))}}
 
              {1 :ziontee113/color-picker.nvim
                 :config true}
@@ -338,13 +358,14 @@
                 :config true}
 
              {1 :CRAG666/code_runner.nvim
-                :config true}
+                :config (fn [] (require :modules.code-runner-nvim))}
 
-              ;; Linting. -----------------------------------------------------------------------------------------------------------------------------
-              {1 :rcarriga/nvim-dap-ui
-                 :dependencies [:mfussenegger/nvim-dap :nvim-neotest/nvim-nio]
-                 :Lazy :VeryLazy
-                 :config (fn [] (. (require :dapui) :setup))}
+              ;; Debugging
+             :mfussenegger/nvim-dap
+             :rcarriga/nvim-dap-ui
+             :jay-babu/mason-nvim-dap.nvim
+             :Weissle/persistent-breakpoints.nvim
+
               ] ;; End of plugins.
 
 

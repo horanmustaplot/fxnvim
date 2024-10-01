@@ -5,6 +5,9 @@
 
 ;; Splits mapping.
 (map! [:n] "<Leader>w" ":w<CR>" "Save file")
+(map! [:n] "<Leader>z" ":ZenMode<CR>" "Toggle Zen Mode")
+(map! [:n] "<Leader>r" ":RunCode<CR>" "Run code")
+(map! [:n] "<C-CR>" ":Lspsaga term_toggle<CR>" "Toggle floating terminal")
 
 (map! [:n] "<localleader>s" ":sp<CR>" "Open horizontal split")
 (map! [:n] "<localleader>w" ":vs<CR>" "Open vertical split")

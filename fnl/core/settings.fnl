@@ -1,7 +1,5 @@
 (import-macros {: set! : set+} :hibiscus.vim)
 
-(vim.cmd "colorscheme oxocarbon")
-
 ;; Set spelling settings
 (set! spell true)
 (set! spelllang [:en_us])	
@@ -58,9 +56,6 @@
                   :msgsep    "─"
                   :vert      "│"})
 
-;; gives a global statusline instead of one for every split, and there is always a separator between splits
-(set! laststatus 3)
-
 ;; Enable concealment
 (set! conceallevel  2)
 (set! concealcursor "")
@@ -87,3 +82,8 @@
 (each [type icon (pairs signs)] (local hl (.. :DiagnosticSign type))
   (vim.fn.sign_define hl {:numhl hl :text icon :texthl hl}))
 
+
+(vim.cmd "colorscheme oxocarbon")
+
+;; gives a global statusline instead of one for every split, and there is always a separator between splits
+(set! laststatus 3)
