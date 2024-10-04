@@ -68,7 +68,8 @@
                  :event :VeryLazy
                  :version "*"}
 
-              :szw/vim-maximizer
+              ; :szw/vim-maximizer
+              {1 :declancm/maximize.nvim :config true}	
               :sindrets/winshift.nvim
 
               {1 :ecthelionvi/NeoView.nvim ;; plugin that allows users to save and restore their views and cursor positions across sessions. (archived but still works) https://github.com/ecthelionvi/NeoView.nvim
@@ -179,6 +180,25 @@
                         :hide_toolbar false
                         :html_output  :/tmp/markmap.html}}	
 
+              {1 :epwalsh/obsidian.nvim
+                 :dependencies [:nvim-lua/plenary.nvim]
+                 :ft :markdown
+                 :lazy true
+                 :opts {:workspaces [{:name :personal
+                                      :path "~/notes/personal"}
+                                     {:name :academic
+                                      :path "~/notes/academic"}
+                                     {:name :professional
+                                      :path "~/notes/work"}]
+                        :ui {:enable false}}
+                 :version "*"}
+
+              {1 :OXY2DEV/markview.nvim
+                 :dependencies [:nvim-treesitter/nvim-treesitter
+                                :nvim-tree/nvim-web-devicons]
+                 :lazy false
+                 :config (fn [] (require :modules.markview-nvim))}	
+
               ;; mason-lspconfig. ---------------------------------------------------------------------------------------------------------------
               {1 :williamboman/mason-lspconfig.nvim
                  :dependencies [ {1 :williamboman/mason.nvim
@@ -201,12 +221,6 @@
               {1 "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
                  :event :BufWinEnter
                  :config (fn [] (require :modules.lsp_lines-nvim))}
-
-              {1 :OXY2DEV/markview.nvim                            ; https://github.com/OXY2DEV/markview.nvim
-                 :dependencies [:nvim-treesitter/nvim-treesitter
-                                :nvim-tree/nvim-web-devicons]
-                 :lazy false
-                 :config (fn [] (require :modules.markview-nvim))}	
 
               ;                                 ╭─────────────╮
               ;                                 │ Tree-sitter │
@@ -238,7 +252,7 @@
              ;   :version "*"}	
 
               {1 :ptdewey/pendulum-nvim
-                 :config  (fn [] ((. (require :pendulum) :setup) {:gen_reports true
+                 :config (fn [] ((. (require :pendulum) :setup) {:gen_reports true
                                                                  :log_file    (vim.fn.expand :$HOME/.pendulum.csv)
                                                                  :timeout_len 300
                                                                  :timer_len   60
@@ -338,17 +352,23 @@
                 :dependencies [:folke/twilight.nvim]
                 :Lazy :VeryLazy
                 :opts {
-                  :on_close (fn [] ((. (require :lualine) :hide) {:unhide true})
-                                   (set vim.wo.number true)
-                                   (set vim.wo.relativenumber true)
-                                   (set vim.wo.foldenable true)
-                                   (vim.cmd "Lspsaga winbar_toggle"))
-                  :on_open  (fn [] ((. (require :lualine) :hide) {:unhide false})
-                                   (set vim.wo.number false)
-                                   (set vim.wo.relativenumber false)
-                                   (set vim.wo.foldenable false)
-                                   (vim.cmd "Lspsaga winbar_toggle")
-                                   (vim.cmd "colorscheme oxocarbon"))}}
+                  :on_close (fn []
+                              (vim.cmd "Lspsaga winbar_toggle")
+                              ((. (require :lualine) :hide) {:unhide true})
+                              ((. (require :incline) :enable) {})
+                              (set vim.wo.number true)
+                              (set vim.wo.relativenumber true)
+                              (set vim.opt.laststatus 3)
+                              (set vim.wo.foldenable true))
+
+                  :on_open  (fn [] 
+                              (vim.cmd "Lspsaga winbar_toggle")
+                              ((. (require :lualine) :hide) {:unhide false})
+                              ((. (require :incline) :disable) {})
+                              (set vim.wo.number false)
+                              (set vim.wo.relativenumber false)
+                              (set vim.wo.foldenable false)
+                              (vim.cmd "colorscheme oxocarbon"))}}
 
              {1 :ziontee113/color-picker.nvim
                 :config true}
@@ -358,7 +378,8 @@
                 :config true}
 
              {1 :CRAG666/code_runner.nvim
-                :config (fn [] (require :modules.code-runner-nvim))}
+                :config (fn []
+                          (require :modules.code-runner-nvim))}
 
               ;; Debugging
              :mfussenegger/nvim-dap

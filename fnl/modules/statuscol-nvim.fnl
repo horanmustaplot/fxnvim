@@ -32,11 +32,9 @@
                                                 :text [builtin.lnumfunc]}
 
                                               {:click "v:lua.ScSa"
-                                                :sign {:auto true
-                                                :colwidth 1
-                                                :maxwidth 1
-                                                :name [".*"]
-                                                :wrap true}}
+                                                :sign {
+                                                  :name [".*"]
+                                                  :wrap true}}
 
                                               {:sign {
                                                 :colwidth 1

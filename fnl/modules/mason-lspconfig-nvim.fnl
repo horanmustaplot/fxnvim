@@ -9,9 +9,10 @@
 ((. mason-lspconfig :setup) {:ensure_installed [ :lua_ls
                                                  :html
                                                  :cssls
-                                                 :fennel_language_server
-                                                 ; :fennel_ls
+                                                 :fennel_ls
+                                                 :nil_ls
                                                  :clangd
+                                                 :marksman
                                                  :gopls
                                                  :pyright
                                                  :rust_analyzer
@@ -29,5 +30,5 @@
 ((. (require :mason-lspconfig) :setup_handlers) handlers)
 
 ; Removing seeing the vim error
-((. (require :lspconfig) :fennel_language_server :setup) {:settings {:fennel {:diagnostics {:globals [:vim]}}}})	
+((. (require :lspconfig) :fennel_ls :setup) {:settings {:fennel {:diagnostics {:globals [:vim]}}}})	
 
