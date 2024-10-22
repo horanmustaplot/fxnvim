@@ -87,3 +87,6 @@
 
 ;; gives a global statusline instead of one for every split, and there is always a separator between splits
 (set! laststatus 3)
+
+(set! guicursor "n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor")
+

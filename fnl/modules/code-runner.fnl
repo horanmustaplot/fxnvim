@@ -26,3 +26,4 @@
                                           "rustc $fileName &&"
                                           :$dir/$fileNameWithoutExt]
                                    :typescript "deno run"}})	
+

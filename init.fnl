@@ -20,15 +20,17 @@
               {1 :nvim-lualine/lualine.nvim
                  :dependencies :nvim-tree/nvim-web-devicons
                  :event        :VeryLazy
-                 :init         (fn [] (require :modules.lualine-nvim))}
+                 :init         (fn []
+                                 (require :modules.lualine))}
 
              ;{1 :stevearc/dressing.nvim
              ;   :event :VeryLazy}
 
               {1 :folke/noice.nvim
-                 :dependencies {1 :MunifTanjim/nui.nvim
-                                  :event :VeryLazy}
-                 :config       (fn [] (require :modules.noice-nvim))
+                 :dependencies [{1 :MunifTanjim/nui.nvim
+                                   :event :VeryLazy}]
+                 :config       (fn []
+                                 (require :modules.noice))
                  :event        :VeryLazy}
 
               {1 :nvimdev/dashboard-nvim
@@ -37,11 +39,13 @@
                                     :event :VeryLazy
                                     :config true}]
                  :event :VimEnter
-                 :config (fn [] (require :modules.dashboard-nvim))}
+                 :config (fn []
+                           (require :modules.dashboard))}
 
               {1 :stevearc/oil.nvim
                  :dependencies [{1 :echasnovski/mini.icons :opts {}}]
-                 :config       (fn [] (require :modules.oil-nvim))
+                 :config       (fn []
+                                 (require :modules.oil))
                  :cmd          :Oil}
 
               ; {1 :refractalize/oil-git-status.nvim
@@ -56,7 +60,8 @@
 
               {1 :luukvbaal/statuscol.nvim
                  :Lazy :VeryLazy
-                 :config (fn [] (require :modules.statuscol-nvim))}
+                 :config (fn []
+                           (require :modules.statuscol))}
 
               ;                              ╭───────────────────╮
               ;                              │ Useful utilities. │
@@ -80,7 +85,8 @@
                  :opts {:render :virtual}}
 
               {1 :RRethy/vim-illuminate
-              :config (fn [] (require :modules.vim-illuminate))}
+              :config (fn []
+                        (require :modules.vim-illuminate))}
               :folke/which-key.nvim
 
               {1 :akinsho/toggleterm.nvim
@@ -108,14 +114,16 @@
 
               {1 :dstein64/vim-startuptime
                  :event  :VeryLazy
-                 :config (fn [] (require :modules.mini-align))}
+                 :config (fn []
+                           (require :modules.mini-align))}
 
               {1 :windwp/nvim-autopairs
                  :config true
                  :event  :InsertEnter}	
 
               {1 :phaazon/hop.nvim
-                 :config  (fn [] (require :modules.hop-nvim))
+                 :config  (fn []
+                            (require :modules.hop))
                  :cmd     :HopWord
                  :version :v2}
 
@@ -141,14 +149,16 @@
                                  ; Telescope extensions
                                  {1 :nvim-telescope/telescope-project.nvim
                                     :event :VeryLazy}]
-                 :config (fn [] (require :modules.telescope-nvim))}
+                 :config (fn []
+                           (require :modules.telescope))}
 
               ;                                 ╭─────────────╮
               ;                                 │ Completion. │
               ;                                 ╰─────────────╯
 
               {1 :hrsh7th/nvim-cmp
-                 :config (fn [] (require :modules.cmp-nvim))
+                 :config (fn []
+                           (require :modules.cmp))
                  :dependencies [ :hrsh7th/cmp-buffer
                                  :hrsh7th/cmp-cmdline
                                  :hrsh7th/cmp-path
@@ -157,12 +167,13 @@
                                  :neovim/nvim-lspconfig
                                  :hrsh7th/cmp-nvim-lsp
                                  :hrsh7th/cmp-nvim-lua
-                                 {1 :L3MON4D3/LuaSnip :build "make install_jsregexp" :version :v2.*}
+                                 {1 :L3MON4D3/LuaSnip
+                                    :build "make install_jsregexp"
+                                    :version :v2.*}
                                  :saadparwaiz1/cmp_luasnip
                                  :rafamadriz/friendly-snippets
                                  :onsails/lspkind.nvim]
-                 :event  :InsertEnter
-                 :config (fn [] (require :modules.cmp-nvim))}
+                 :event  :InsertEnter}
 
               ;                                  ╭──────────╮
               ;                                  │ Org Mode │
@@ -190,14 +201,15 @@
                                       :path "~/notes/academic"}
                                      {:name :professional
                                       :path "~/notes/work"}]
-                        :ui {:enable false}}
+                        :ui {:enable true}}
                  :version "*"}
 
               {1 :OXY2DEV/markview.nvim
                  :dependencies [:nvim-treesitter/nvim-treesitter
                                 :nvim-tree/nvim-web-devicons]
                  :lazy false
-                 :config (fn [] (require :modules.markview-nvim))}	
+                 :config (fn []
+                           (require :modules.markview))}	
 
               ;; mason-lspconfig. ---------------------------------------------------------------------------------------------------------------
               {1 :williamboman/mason-lspconfig.nvim
@@ -208,7 +220,8 @@
                                     :event :VeryLazy}]
                  :after [ :williamboman/mason.nvim]
                  :even  :VeryLazy
-                 :config (fn [] (require :modules.mason-lspconfig-nvim))}
+                 :config (fn []
+                           (require :modules.mason-lspconfig))}
 
               ;; Language servers. ----------------------------------------------------------------------------------------------------------------------------
 
@@ -220,7 +233,8 @@
 
               {1 "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
                  :event :BufWinEnter
-                 :config (fn [] (require :modules.lsp_lines-nvim))}
+                 :config (fn []
+                           (require :modules.lsp_lines))}
 
               ;                                 ╭─────────────╮
               ;                                 │ Tree-sitter │
@@ -228,7 +242,8 @@
 
               {1 :nvim-treesitter/nvim-treesitter
                  :build  ":TSUpdate"
-                 :config (fn [] (require :modules.nvim-treesitter))
+                 :config (fn []
+                           (require :modules.treesitter))
                  :event  :BufWinEnter}	
 
               ;                                ╭──────────────╮
@@ -240,7 +255,8 @@
 
               {1 :b0o/incline.nvim
                  :event [:BufReadPost :BufAdd :BufNewFile]
-                 :config (fn [] (require :modules.incline-nvim))}
+                 :config (fn []
+                           (require :modules.incline))}
 
               ;; Plantuml
               ; :aklt/plantuml-syntax
@@ -252,7 +268,8 @@
              ;   :version "*"}	
 
               {1 :ptdewey/pendulum-nvim
-                 :config (fn [] ((. (require :pendulum) :setup) {:gen_reports true
+                 :config (fn []
+                           ((. (require :pendulum) :setup) {:gen_reports true
                                                                  :log_file    (vim.fn.expand :$HOME/.pendulum.csv)
                                                                  :timeout_len 300
                                                                  :timer_len   60
@@ -301,7 +318,8 @@
 
               {1 :kevinhwang91/nvim-ufo
                  :dependencies :kevinhwang91/promise-async
-                 :config (fn [] (require :modules.ufo-nvim))}
+                 :config (fn []
+                           (require :modules.ufo))}
               {1 :LudoPinelli/comment-box.nvim
                     :Lazy :VeryLazy}
 
@@ -312,19 +330,20 @@
                  :event :VeryLazy
                  :ft   [:org]}
 
-              {1 :nvim-neorg/neorg
-                 :config true
-                 :lazy false
-                 :version "*"}
+              ; {1 :nvim-neorg/neorg
+              ;    :config true
+              ;    :lazy false
+              ;    :version "*"}
 
               {1 :akinsho/flutter-tools.nvim
                  :config true
                  :dependencies [:nvim-lua/plenary.nvim :stevearc/dressing.nvim]
                  :lazy false}	
 
-              {1 :nvim-neo-tree/neo-tree.nvim 
-              :Lazy :VeryLazy
-              :config (fn [] (require :modules.neo-tree-nvim))}
+              ; {1 :nvim-neo-tree/neo-tree.nvim 
+              ; :Lazy :VeryLazy
+              ; :config (fn []
+              ;           (require :modules.neo-tree))}
 
              {1 :nvimdev/lspsaga.nvim
                 :Event :LspAttach
@@ -377,9 +396,40 @@
                 :lazy :VeryLazy
                 :config true}
 
+                {1 :stevearc/conform.nvim
+                :config (fn []
+                          (require :modules.conform)) 
+                :event [:BufReadPre :BufNewFile]}
+
+             {1 :mfussenegger/nvim-lint
+                :config (fn []
+                          (require :modules.lint))
+                :event [:BufReadPre :BufNewFile]}
+
              {1 :CRAG666/code_runner.nvim
                 :config (fn []
-                          (require :modules.code-runner-nvim))}
+                          (require :modules.code-runner))}
+
+             {1 :rcarriga/nvim-notify
+                :config true}
+
+             {1 :xeluxee/competitest.nvim
+                :config (fn []
+                          ((. (require :competitest) :setup)))
+                :dependencies :MunifTanjim/nui.nvim}
+
+             {1 :arminveres/md-pdf.nvim
+                :branch :main
+                :keys [{1 "<leader>,"
+                        2 (fn []
+                            ((. (require :md-pdf) :convert_md_to_pdf)))
+                        :desc "Markdown preview"}]
+                :lazy true
+                :opts {}}
+
+             {1 :lervag/vimtex
+                :init (fn [] (set vim.g.vimtex_view_method :zathura))
+                :lazy false}
 
               ;; Debugging
              :mfussenegger/nvim-dap

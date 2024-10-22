@@ -3,7 +3,7 @@
                              {:callback (fn [] (set vim.b.miniindentscope_disable true))
                              :pattern ["dashboard" ;; NOTE: List files you wanna disable mini indentscope here.
                                        "lazy"
-                                       "mason"]})	
+                                       "mason"]})
 
 ; Fix the problem of: lsp-lines virtual text doubling in lazy.nvim.
 (vim.api.nvim_create_autocmd :WinEnter
@@ -21,7 +21,7 @@
                      (local hex (string.format "%04x" i))
                      (local char (vim.fn.nr2char i))
                      (local line (.. char " 0x" hex "  \n"))
-                     (vim.api.nvim_put [line] :l true true)))))	
+                     (vim.api.nvim_put [line] :l true true)))))
 
 ; Disable folding in some buffers ex: Neotree.
 (vim.api.nvim_create_autocmd :FileType
@@ -36,11 +36,11 @@
                              {:callback (fn [] (set vim.opt_local.number false)
                                           (set vim.opt_local.relativenumber
                                                false))
-                              :pattern :oil})	
+                              :pattern :oil})
 
 (vim.api.nvim_create_autocmd :FileType
                              {:callback (fn []
                                           (set vim.opt_local.foldmethod :manual)
                                           (set vim.opt_local.foldenable false))
-                              :pattern [:oil :neo-tree]})	
+                              :pattern [:oil :neo-tree]})
 

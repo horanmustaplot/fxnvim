@@ -3,28 +3,28 @@
 (local lualine (require :lualine))
 
 (local gruvbox-material {:color2   "#504945"
-               :color3   "#32302f"
-               :color4   "#a89984"
-               :blue   "#7daea3"
-               :green  "#a9b665"
-               :orange "#d8a657"
-               :violet "#d3869b"
-               :cyan   "#8ec07c"
-               :red    "#ea6962"
-               :bg      "#282828"
-               :fg2      "#ddc7a1"})	
+                         :color3   "#32302f"
+                         :color4   "#a89984"
+                         :blue   "#7daea3"
+                         :green  "#a9b665"
+                         :orange "#d8a657"
+                         :violet "#d3869b"
+                         :cyan   "#8ec07c"
+                         :red    "#ea6962"
+                         :bg       "#282828"
+                         :fg2      "#ddc7a1"})
 
 (local oxocarbon {:color2   "#161616"
-               :color3   "#262626"
-               :color4   "#393939"
-               :blue   "#78a9ff"
-               :green  "#42be65"
-               :orange "#82cfff"
-               :violet "#ff7eb6"
-               :cyan   "#3ddbd9"
-               :red    "#ee5396"
-               :bg      "#161616"
-               :fg2      "#dde1e6"})	
+                  :color3   "#262626"
+                  :color4   "#393939"
+                  :blue   "#78a9ff"
+                  :green  "#42be65"
+                  :orange "#82cfff"
+                  :violet "#ff7eb6"
+                  :cyan   "#3ddbd9"
+                  :red    "#ee5396"
+                  :bg       "#161616"
+                  :fg2      "#dde1e6"})
 
 (local colors oxocarbon)
 
@@ -39,23 +39,27 @@
                                    (< (length gitdir) (length filepath))))
        :hide_in_width (fn [] (> (vim.fn.winwidth 0) 80))})
 (local config { 
-      :options {:disabled_filetypes {:statusline [:dashboard :neo-tree]}}
-      :inactive_sections {:lualine_a {}
-                          :lualine_b {}
-                          :lualine_c {}
-                          :lualine_x {}
-                          :lualine_y {}
-                          :lualine_z {}}
-                          :options {:component_separators ""
-                                    :section_separators   ""
-                                    :theme {:inactive {:c {:bg colors.bg :fg colors.fg}}
-                                            :normal   {:c {:bg colors.bg :fg colors.fg}}}}
-                          :sections {:lualine_a {}
-                                     :lualine_b {}
-                                     :lualine_c {}
-                                     :lualine_x {}
-                                     :lualine_y {}
-                                     :lualine_z {}}})
+       :inactive_sections {:lualine_a {}
+                           :lualine_b {}
+                           :lualine_c {}
+                           :lualine_x {}
+                           :lualine_y {}
+                           :lualine_z {}}
+       :sections {:lualine_a {}
+                  :lualine_b {}
+                  :lualine_c {}
+                  :lualine_x {}
+                  :lualine_y {}
+                  :lualine_z {}}
+
+       :options {:component_separators ""
+                 :section_separators   ""
+                 :theme {:inactive {:c {:bg colors.bg :fg colors.fg}}
+                         :normal   {:c {:bg colors.bg :fg colors.fg}}}
+                 :disabled_filetypes {:statusline [ "dashboard"
+                                                    "alpha"
+                                                    "oil"
+                                                    "neo-tree" ]}}})
 
 (fn ins-left [component] (table.insert config.sections.lualine_c component))
 
@@ -95,11 +99,16 @@
 
 (ins-left {1 :filename
           :color {:fg colors.magenta :gui :bold}
+          :symbols {
+                :modified ""; 
+                :readonly ""; 
+                :unnamed ""
+                :newfile ""}
           :cond conditions.buffer_not_empty})
 
 ; (ins-left [:location])
 
-(ins-left {1 :progress :color {:fg colors.fg :gui :bold}})
+; (ins-left {1 :progress :color {:fg colors.fg :gui :bold}})
 
 (ins-left {1 :diagnostics
           :diagnostics_color {:error {:fg colors.red}
@@ -159,3 +168,4 @@
 ; (ins-right {1 (fn [] "▊") :color {:fg colors.fg2} :padding {:left 1}})
 
 (lualine.setup config)	
+

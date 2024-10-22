@@ -18,7 +18,7 @@
 ; (map! [:n] "<C-d>"   ":<C-d>zz<CR>"      "Scroll down and center")
 
 (map! [:n] "s" ":HopWord<CR>"  "Jump to a word with Hop")
-(map! [:n] "<leader>l" ":lua require(\"lsp_lines\").toggle()<CR>"  "Toggle lsp_lines")
+(map! [:n] "<leader>tl" ":lua require(\"lsp_lines\").toggle()<CR>"  "Toggle lsp_lines")
 (map! [:n] "<C-H-CR>" ":ToggleTerm direction=float<CR>" "Toggle lsp_lines")
 
 (map! [:n] "<leader>b"  ":Telescope buffers<CR>" "Telescope buffers")
