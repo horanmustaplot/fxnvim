@@ -15,7 +15,7 @@
 
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [keybindings](#keybindings)
+- [keybindings](https://github.com/horanmustaplot/fxnvim/wiki/Keybindings)
 - [FAQ](#faq)
 
 ## requirements
