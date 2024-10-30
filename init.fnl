@@ -428,16 +428,26 @@
                 :opts {}}
 
              {1 :lervag/vimtex
-                :init (fn [] (set vim.g.vimtex_view_method :zathura))
+                :init (fn []
+                        (set vim.g.vimtex_view_method :zathura)
+                        (set vim.g.vimtex_compiler_method :latexmk))
                 :lazy false}
 
-              ;; Debugging
+             {1 "https://gitlab.com/itaranto/plantuml.nvim"
+                :opts {:render_on_write true
+                       :renderer {:options {:dark_mode false
+                                            :format nil
+                                            :prog :feh}
+                                  :type :image}}
+                :version "*"}	
+
+             ;; Debugging
              :mfussenegger/nvim-dap
              :rcarriga/nvim-dap-ui
              :jay-babu/mason-nvim-dap.nvim
              :Weissle/persistent-breakpoints.nvim
 
-              ] ;; End of plugins.
+             ] ;; End of plugins.
 
 
             {:checker {:enabled false}
